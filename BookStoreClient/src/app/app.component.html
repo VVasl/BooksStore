@@ -1,0 +1,25 @@
+
+
+<!-- Toolbar -->
+
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <h1>Book Store</h1>
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button [routerLink]="'/new-book'"> Add </a>
+      <a mat-button [routerLink]="'/books'"> Books </a>
+
+    </div>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
+
+
+
+<router-outlet></router-outlet>
