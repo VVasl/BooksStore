@@ -1,1 +1,42 @@
-<p>books works!</p>
+<h1>Book summaries</h1>
+
+<p *ngIf="!books"><b>Loading...</b></p>
+
+<table class="table table-striped" *ngIf="books">
+<thead>
+    <tr>
+        <th>Title</th>
+        <th>AuthorName</th>
+        <th>PublisherName</th>
+        <th>Price</th>
+        <th>PublicationYear</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let book of books">
+        <td>{{book.title}}</td>
+        <td>{{book.authorName}}</td>
+        <td>{{book.publisherName}}</td>
+        <td>{{book.price}}</td>
+        <td>{{book.publicationYear}}</td> 
+        <td>
+            <button type="button" 
+                class="btn btn-default btn-sm" 
+                (click)="showBook(book.id)">
+                Show
+            </button>
+            <button type="button" 
+                class="btn btn-success btn-sm" 
+                (click)="updateBook(book.id)">
+                Update
+            </button>
+            <button type="button" 
+                class="btn btn-danger btn-sm" 
+                (click)="deleteBook(book.id)">
+                Delete
+            </button>
+        </td>
+    </tr>
+
+</tbody> 
+</table>
