@@ -41,6 +41,13 @@ namespace BooksStore
 
             services.AddScoped<IBooksStoreRepository, BooksStoreRepository>();
             services.AddAutoMapper(typeof(Startup));
+            services.AddCors();
+            services.AddMvc()
+                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                 .ConfigureApiBehaviorOptions(options =>
+                 {
+                    options.SuppressModelStateInvalidFilter = true;
+                 });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +68,10 @@ namespace BooksStore
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Book Store V1");
                 c.RoutePrefix = string.Empty;
             });
+
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod());
 
             app.UseHttpsRedirection();
 

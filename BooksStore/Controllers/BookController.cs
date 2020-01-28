@@ -35,7 +35,7 @@ namespace BooksStore.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet("[action]")]
         public ActionResult GetBooks()
         {
             try
@@ -78,9 +78,10 @@ namespace BooksStore.Controllers
                     var newBook = _mapper.Map<BookDto, Book>(book);
                     _repository.AddEntity(newBook);
 
+
                     if (_repository.SaveAll())
                     {
-                        return CreatedAtAction(nameof(GetBook), new { id = book.Id }, _mapper.Map<Book, BookDto>(newBook));
+                         return CreatedAtAction(nameof(GetBook), new { id = book.Id }, _mapper.Map<Book, BookDto>(newBook));
                     }
                 }
                 else
