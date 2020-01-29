@@ -15,12 +15,12 @@ namespace BooksStore.Data
             CreateMap<Book, BookDto>()
                 .ReverseMap();
 
-            //CreateMap<Order, OrderViewModel>()
-            //    .ForMember(o => o.OrderId, ex => ex.MapFrom(o => o.Id))
-            //    .ReverseMap();
+            CreateMap<Order, OrderDto>()
+                .ForMember(o => o.OrderId, ex => ex.MapFrom(o => o.Id))
+                .ReverseMap();
 
-            //CreateMap<OrderItem, OrderItemViewModel>()
-            //    .ReverseMap();
+            CreateMap<OrderItem, OrderItemsDto>()
+                .ReverseMap();
         }
     }
 }

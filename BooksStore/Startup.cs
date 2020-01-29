@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 
 namespace BooksStore
 {
@@ -42,12 +43,16 @@ namespace BooksStore
             services.AddScoped<IBooksStoreRepository, BooksStoreRepository>();
             services.AddAutoMapper(typeof(Startup));
             services.AddCors();
+            //services.AddMvc()
+            //     .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+            //     .AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore)
+            //     .ConfigureApiBehaviorOptions(options =>
+            //     {
+            //         options.SuppressModelStateInvalidFilter = true;
+            //     });
             services.AddMvc()
-                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
-                 .ConfigureApiBehaviorOptions(options =>
-                 {
-                    options.SuppressModelStateInvalidFilter = true;
-                 });
+                    .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

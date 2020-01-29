@@ -64,6 +64,15 @@ namespace BooksStore.Data
                       .FirstOrDefault();
         }
 
+        public Order GetOrderById(int id)
+        {
+            return _ctx.Orders
+                    .Include(o => o.Items)
+                    .ThenInclude(i => i.Book)
+                    .Where(o => o.Id == id)
+                    .FirstOrDefault();
+        }
+
         //public IEnumerable<Order> GetAllOrdersByUser(string username, bool includeItems)
         //{
         //    if (includeItems)
