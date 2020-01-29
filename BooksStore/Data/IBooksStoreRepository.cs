@@ -12,6 +12,6 @@ namespace BooksStore.Data
         IEnumerable<Book> GetBooksByCategory(string category);
         Order GetOrderById(string username, int id);
         bool SaveAll();
-        void UpdateBook(Book newBook);
+        void UpdateBook(int id, Book newBook);
     }
 }

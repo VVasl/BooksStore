@@ -17,11 +17,6 @@ namespace BooksStore.Controllers
     [Route("api/[Controller]")]
     public class BookController : ControllerBase
     {
-
-        //private bool BookExists(int id)
-        //{
-        //    return _context.Books.Any(e => e.Id == id);
-        //}
         private readonly BooksStoreContext _ctx;
         private readonly IBooksStoreRepository _repository;
         private readonly Logger _logger;
@@ -96,29 +91,20 @@ namespace BooksStore.Controllers
             }
 
             return BadRequest("Failed to save a new book");
-
-            //{
-            //    "id": 1,
-            //  "title": "Never eat Alone",
-            //  "authorName": "Somebody",
-            //  "publisherName": "Club",
-            //  "price": 120,
-            //  "publicationYear": 2015
-            //}
         }
 
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id)
+        public IActionResult Update(int id, BookDto book)
         {
             try
             {
-                var book = _repository.GetBookById(id);
+                var newBook = _mapper.Map<BookDto, Book>(book);
 
                 if (book != null)
                 {
-                    _repository.UpdateBook(book);
-                    return Ok(_mapper.Map<Book, BookDto>(book));
+                    _repository.UpdateBook(id,newBook);
+                    return Ok(_mapper.Map<Book, BookDto>(newBook));
                 }
                 else
                 {
@@ -131,45 +117,6 @@ namespace BooksStore.Controllers
                 return BadRequest("Failed to update order");
             }
         }
-
-        //[HttpPut("{courseId}")]
-        //public IActionResult UpdateCourseForAuthor(Guid authorId,
-        //    Guid courseId,
-        //    CourseForUpdateDto course)
-        //{
-        //    if (!_courseLibraryRepository.AuthorExists(authorId))
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var courseForAuthorFromRepo = _courseLibraryRepository.GetCourse(authorId, courseId);
-
-        //    if (courseForAuthorFromRepo == null)
-        //    {
-        //        var courseToAdd = _mapper.Map<Entities.Course>(course);
-        //        courseToAdd.Id = courseId;
-
-        //        _courseLibraryRepository.AddCourse(authorId, courseToAdd);
-
-        //        _courseLibraryRepository.Save();
-
-        //        var courseToReturn = _mapper.Map<CourseDto>(courseToAdd);
-
-        //        return CreatedAtRoute("GetCourseForAuthor",
-        //            new { authorId, courseId = courseToReturn.Id },
-        //            courseToReturn);
-        //    }
-
-        //    // map the entity to a CourseForUpdateDto
-        //    // apply the updated field values to that dto
-        //    // map the CourseForUpdateDto back to an entity
-        //    _mapper.Map(course, courseForAuthorFromRepo);
-
-        //    _courseLibraryRepository.UpdateCourse(courseForAuthorFromRepo);
-
-        //    _courseLibraryRepository.Save();
-           //return NoContent();
-       // }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<Book>> Delete(int id)
@@ -185,5 +132,10 @@ namespace BooksStore.Controllers
 
             return book;
         }
+
+        //private bool BookExists(int id)
+        //{
+        //    return _context.Books.Any(e => e.Id == id);
+        //}
     }
 }

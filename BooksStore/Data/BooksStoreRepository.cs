@@ -98,9 +98,9 @@ namespace BooksStore.Data
                        .ToList();
         }
 
-        public void UpdateBook(Book newBook)
+        public void UpdateBook(int id, Book newBook)
         {
-            Book oldBook = GetBookById(newBook.Id);
+            Book oldBook = GetBookById(id);
             if(oldBook != null)
             {
                 oldBook.Title = newBook.Title;
