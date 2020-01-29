@@ -99,16 +99,23 @@ namespace BooksStore.Controllers
         {
             try
             {
-                var newBook = _mapper.Map<BookDto, Book>(book);
-
-                if (book != null)
+                if (ModelState.IsValid)
                 {
-                    _repository.UpdateBook(id,newBook);
-                    return Ok(_mapper.Map<Book, BookDto>(newBook));
+                        var newBook = _mapper.Map<BookDto, Book>(book);
+
+                    if (book != null)
+                    {
+                        _repository.UpdateBook(id,newBook);
+                        return Ok(_mapper.Map<Book, BookDto>(newBook));
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
                 }
                 else
                 {
-                    return NotFound();
+                    return BadRequest(ModelState);
                 }
             }
             catch (Exception ex)
