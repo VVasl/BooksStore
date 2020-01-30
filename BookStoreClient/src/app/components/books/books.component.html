@@ -1,4 +1,4 @@
-<h1>Book summaries</h1>
+<h1>Books</h1>
 
 <p *ngIf="!books"><b>Loading...</b></p>
 
@@ -10,6 +10,7 @@
         <th>PublisherName</th>
         <th>Price</th>
         <th>PublicationYear</th>
+        <th>Image</th>
     </tr>
 </thead>
 <tbody>
@@ -19,6 +20,7 @@
         <td>{{book.publisherName}}</td>
         <td>{{book.price}}</td>
         <td>{{book.publicationYear}}</td> 
+        <td><img [src]="createImgPath(book.title)" alt="profile picture" style="width:90px; height:100px;"></td>
         <td>
             <button type="button" 
                 class="btn btn-default btn-sm" 

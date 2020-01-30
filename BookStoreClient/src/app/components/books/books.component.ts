@@ -21,6 +21,7 @@ export class BooksComponent implements OnInit {
   constructor(private service: BookService, private router: Router) { }
 
   ngOnInit() {
+
     this.service.getAllBooks().subscribe(data => {
       this.books = data;
     })
@@ -38,4 +39,7 @@ export class BooksComponent implements OnInit {
     this.router.navigate(["/delete-book/"+id]);
   }
 
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:44369/Resources/Images/${serverPath}.jpg`;
+}
 }

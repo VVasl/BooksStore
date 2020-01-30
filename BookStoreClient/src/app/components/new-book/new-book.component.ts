@@ -11,18 +11,23 @@ import { Router } from '@angular/router';
 export class NewBookComponent implements OnInit {
 
   addBookForm: FormGroup;
+  selectedFile: File = null;
 
   constructor(private service: BookService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.addBookForm = this.fb.group({
-      //id:[Math.floor(Math.random()*1000)],
       title:[null, Validators.required],
       authorName:[null, Validators.required],
       publisherName:[null, Validators.compose([Validators.required, Validators.minLength(30)])],
       price:[null],
-      publicationYear:[null]
+      publicationYear:[null],
+      image: [null]
     })
+  }
+
+  onSelectFile(fileInput: any) {
+    this.selectedFile = <File>fileInput.target.files[0];
   }
 
   onSubmit(){
@@ -31,14 +36,3 @@ export class NewBookComponent implements OnInit {
     })
   }
 }
-// let tour = automapper.map(
-//   'TourFormModel',
-//   'TourWithManagerForCreation',
-//   this.tourForm.value);
-// this.tourService.addTourWithManager(tour)
-//   .subscribe(
-//     () => {
-//       this.router.navigateByUrl('/tours');
-//     },
-//     (validationResult) => 
-//     { ValidationErrorHandler.handleValidationErrors(this.tourForm, validationResult); });
