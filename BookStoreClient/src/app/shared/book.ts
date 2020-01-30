@@ -6,4 +6,5 @@ interface Book
     publisherName: string;
     price: number;
     publicationYear: number;
+    image:string;
 }

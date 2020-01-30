@@ -9,6 +9,8 @@ import { DeleteBookComponent } from './components/delete-book/delete-book.compon
 import { NewBookComponent } from './components/new-book/new-book.component';
 import { ShowBookComponent } from './components/show-book/show-book.component';
 import { UpdateBookComponent } from './components/update-book/update-book.component';
+import { CartComponent } from './components/cart/cart.component';
+import { UploadComponent } from './components/upload/upload.component';
 const routes: Routes = [];
 
 @NgModule({
@@ -18,7 +20,9 @@ const routes: Routes = [];
     DeleteBookComponent,
     NewBookComponent,
     ShowBookComponent,
-    UpdateBookComponent
+    UpdateBookComponent,
+    CartComponent,
+    UploadComponent
   ],
   imports: [
     RouterModule.forRoot([
