@@ -28,7 +28,7 @@ namespace BooksStore.Models
 
         [Required]
         public int PublicationYear { get; set; }
-        //public string Image { get; set; }
+        public string Image { get; set; }
         //public string Details { get; set; }
     }
 }

@@ -9,7 +9,6 @@ using BooksStore.Models;
 using BooksStore.Data.Entities;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 
 namespace BooksStore.Controllers
 {
@@ -139,6 +138,7 @@ namespace BooksStore.Controllers
 
             return book;
         }
+
 
         //private bool BookExists(int id)
         //{
