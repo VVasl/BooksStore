@@ -10,7 +10,9 @@ export class HomeComponent implements OnInit {
 
   public books: Book[];
 
-  constructor(private service: BookService) { }
+  constructor(private service: BookService) {
+    this.books = service.books;
+   }
 
   ngOnInit() {
     this.service.getAllBooks().subscribe(data => {
@@ -20,6 +22,10 @@ export class HomeComponent implements OnInit {
 
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44369/Resources/Images/${serverPath}.jpg`;
-}
+  }
+
+  addBook(book: Book) {
+    this.service.AddToOrder(book);
+  }
 
 }

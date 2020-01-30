@@ -9,13 +9,13 @@
           <li><strong>Author</strong>: {{ book.authorName }}</li>
           <li><strong>Publication Year</strong>: {{ book.publicationYear }}</li>
         </ul>
-        <p class="button"><button id="buyButton" href="#" class="btn btn-primary">Add to cart</button></p>
+        <p class="button"><button id="buyButton" class="btn btn-primary" (click)= addBook(book)>Add to cart</button></p>
       </div>
   </div>
 </div>
   <div class="col-md-3">
     <div class="card bg-light p-2">
-      <h3>Cart</h3>
+      <app-cart></app-cart>
     </div>
   </div>
 
