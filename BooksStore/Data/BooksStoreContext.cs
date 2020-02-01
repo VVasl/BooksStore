@@ -12,7 +12,7 @@ namespace BooksStore.Data
     {
         public BooksStoreContext(DbContextOptions<BooksStoreContext> options) : base(options)
         {
-
+            Database.EnsureCreated();
         }
 
         public DbSet<Book> Books { get; set; }

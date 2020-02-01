@@ -8,6 +8,7 @@ namespace BooksStore.Data
         void AddEntity(object model);
         IEnumerable<Book> GetAllBooks();
         IEnumerable<Order> GetAllOrders(bool includeItems);
+        IEnumerable<Order> GetAllOrdersByUser(string username, bool includeItems);
         Book GetBookById(int? id);
         IEnumerable<Book> GetBooksByCategory(string category);
         Order GetOrderById(string username, int id);

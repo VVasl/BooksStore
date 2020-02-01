@@ -73,25 +73,25 @@ namespace BooksStore.Data
                     .FirstOrDefault();
         }
 
-        //public IEnumerable<Order> GetAllOrdersByUser(string username, bool includeItems)
-        //{
-        //    if (includeItems)
-        //    {
+        public IEnumerable<Order> GetAllOrdersByUser(string username, bool includeItems)
+        {
+            if (includeItems)
+            {
 
-        //        return _ctx.Orders
-        //                   .Where(o => o.User.UserName == username)
-        //                   .Include(o => o.Items)
-        //                   .ThenInclude(i => i.Book)
-        //                   .ToList();
+                return _ctx.Orders
+                           .Where(o => o.User.UserName == username)
+                           .Include(o => o.Items)
+                           .ThenInclude(i => i.Book)
+                           .ToList();
 
-        //    }
-        //    else
-        //    {
-        //        return _ctx.Orders
-        //                   .Where(o => o.User.UserName == username)
-        //                   .ToList();
-        //    }
-        //}
+            }
+            else
+            {
+                return _ctx.Orders
+                           .Where(o => o.User.UserName == username)
+                           .ToList();
+            }
+        }
 
         public Book GetBookById(int? id)
         {

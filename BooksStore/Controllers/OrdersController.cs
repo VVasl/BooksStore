@@ -42,7 +42,8 @@ namespace BooksStore.Controllers
         {
             try
             {
-                var results = _repository.GetAllOrders(includeItems);
+                var username = User.Identity.Name;
+                var results = _repository.GetAllOrdersByUser(username, includeItems);
                 return Ok(_mapper.Map<IEnumerable<Order>, IEnumerable<OrderDto>>(results));
             }
             catch (Exception ex)
@@ -57,8 +58,8 @@ namespace BooksStore.Controllers
         {
             try
             {
-                //var order = _repository.GetOrderById(User.Identity.Name, id);
-                var order = _repository.GetOrderById(id);
+                var order = _repository.GetOrderById(User.Identity.Name, id);
+               // var order = _repository.GetOrderById(id);
 
                 if (order != null)
                 {
@@ -77,7 +78,7 @@ namespace BooksStore.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]OrderDto model)
+        public async Task<IActionResult> Post([FromBody]OrderDto model)
         {
             // add it to the db
             try
@@ -90,6 +91,9 @@ namespace BooksStore.Controllers
                     {
                         newOrder.OrderDate = DateTime.Now;
                     }
+
+                    var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
+                    newOrder.User = currentUser;
 
                     _repository.AddEntity(newOrder);
                     if (_repository.SaveAll())
