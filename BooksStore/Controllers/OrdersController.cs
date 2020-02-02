@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace BooksStore.Controllers
 {
     [Route("api/[Controller]")]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class OrdersController : Controller
     {
         private readonly IBooksStoreRepository _repository;
@@ -23,19 +23,19 @@ namespace BooksStore.Controllers
         private readonly UserManager<StoreUser> _userManager;
         private readonly IMapper _mapper;
 
-        //public OrdersController(IBooksStoreRepository repository, IMapper mapper, UserManager<StoreUser> userManager)
-        //{
-        //    _repository = repository;
-        //    _logger = LogManager.GetCurrentClassLogger();
-        //    _mapper = mapper;
-        //    _userManager = userManager;
-        //}
-        public OrdersController(IBooksStoreRepository repository, IMapper mapper)
+        public OrdersController(IBooksStoreRepository repository, IMapper mapper, UserManager<StoreUser> userManager)
         {
             _repository = repository;
             _logger = LogManager.GetCurrentClassLogger();
             _mapper = mapper;
+            _userManager = userManager;
         }
+        //public OrdersController(IBooksStoreRepository repository, IMapper mapper)
+        //{
+        //    _repository = repository;
+        //    _logger = LogManager.GetCurrentClassLogger();
+        //    _mapper = mapper;
+        //}
 
         [HttpGet]
         public IActionResult Get(bool includeItems = true)
@@ -58,8 +58,8 @@ namespace BooksStore.Controllers
         {
             try
             {
-                var order = _repository.GetOrderById(User.Identity.Name, id);
-               // var order = _repository.GetOrderById(id);
+                //var order = _repository.GetOrderById(User.Identity.Name, id);
+                var order = _repository.GetOrderById(id);
 
                 if (order != null)
                 {

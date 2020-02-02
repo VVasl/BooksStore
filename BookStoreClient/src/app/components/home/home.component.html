@@ -3,7 +3,7 @@
   <div class="col-md-9">
     <div class="product-info col-md-4" *ngFor="let book of books">
       <div class="card bg-light p-4 m-1">
-        <img [src]="createImgPath(book.title)" style="width:300px; height:300px;" [alt]="book.title" />
+        <img [src]="createImgPath(book.image)" style="width:300px; height:300px;" [alt]="book.title" />
         <ul  class="product-props list-unstyled">
          <li class="text-primary text-right">{{ book.price | currency:"UAH":true }}</li>
           <li><strong>Author</strong>: {{ book.authorName }}</li>

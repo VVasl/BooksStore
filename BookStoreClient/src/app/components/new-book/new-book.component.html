@@ -21,7 +21,10 @@
             <label for="price" class="required">Price</label>
             <input type="number" class="form-control" id="price" formControlName="price" placeholder="Price">
         </div>
-        <app-upload (onSelectFile)="onSelectFile($event)"></app-upload>
+        <div class="form-group">
+            <label for="image" class="required">Image</label>
+            <input type="text" class="form-control" id="image" formControlName="image" placeholder="Image">
+        </div>
         <button class="btn btn-success" type="submit">Add</button>
         <button class="btn btn-default" [routerLink]="['/books']">Cancel</button>
     

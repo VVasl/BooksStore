@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Order, OrderItem } from "src/app/shared/order";
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,9 @@ export class BookService {
 
   public books: Book[] = [];
   public order: Order = new Order();
+
+  private token: string = "";
+  private tokenExpiration: Date = new Date();
 
   constructor(private http: HttpClient) { }
 
@@ -32,6 +36,21 @@ export class BookService {
 
   deleteBook(id: number){
     return this.http.delete(this._baseURL+'/'+id);
+  }
+
+  public get loginRequired(): boolean {
+    return this.token.length == 0 || this.tokenExpiration > new Date();
+  }
+
+  public login(creds) {
+    return this.http.post("https://localhost:44369/api/Account/CreateToken", creds)
+      .pipe(
+        map((response: any) => {
+          let tokenInfo = response;
+          this.token = tokenInfo.token;
+          this.tokenExpiration = tokenInfo.expiration;
+          return true;
+        }));
   }
 
   public AddToOrder(book: Book) {

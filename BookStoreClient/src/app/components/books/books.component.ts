@@ -9,13 +9,6 @@ import { Router } from '@angular/router';
 })
 export class BooksComponent implements OnInit {
 
-  //public books: Book[] =[{
-    //title: 'First',
-    //authorName:'John'
-  //},{
-    //title:'Second',
-    //authorName:'Kevin'
-  //}];
   public books: Book[];
   
   constructor(private service: BookService, private router: Router) { }
@@ -40,6 +33,7 @@ export class BooksComponent implements OnInit {
   }
 
   public createImgPath = (serverPath: string) => {
-    return `https://localhost:44369/Resources/Images/${serverPath}.jpg`;
-}
+    //return `https://localhost:44369/Resources/Images/${serverPath}.jpg`;
+    return `${serverPath}`;
+  }
 }

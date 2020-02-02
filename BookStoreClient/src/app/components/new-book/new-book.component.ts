@@ -12,6 +12,7 @@ export class NewBookComponent implements OnInit {
 
   addBookForm: FormGroup;
   selectedFile: File = null;
+  public response: {'dbPath': ''}; 
 
   constructor(private service: BookService, private fb: FormBuilder, private router: Router) { }
 
@@ -27,8 +28,9 @@ export class NewBookComponent implements OnInit {
   }
 
   onSelectFile(fileInput: any) {
-    this.selectedFile = <File>fileInput.target.files[0];
+    this.selectedFile = <File>fileInput.target.files[0].name;
   }
+
 
   onSubmit(){
     this.service.addBook(this.addBookForm.value).subscribe( () => {

@@ -9,6 +9,7 @@ import { HttpEventType, HttpClient } from '@angular/common/http';
 export class UploadComponent implements OnInit {
   public progress: number;
   public message: string;
+  public image:string;
   @Output() public onUploadFinished = new EventEmitter();
  
   constructor(private http: HttpClient) { }
@@ -31,6 +32,7 @@ export class UploadComponent implements OnInit {
           this.progress = Math.round(100 * event.loaded / event.total);
         else if (event.type === HttpEventType.Response) {
           this.message = 'Upload success.';
+          this.image = fileToUpload.name;
           this.onUploadFinished.emit(event.body);
         }
       });

@@ -26,7 +26,6 @@ export class UpdateBookComponent implements OnInit {
         id:[data.id],
         title:[data.title, Validators.required],
         authorName:[data.authorName, Validators.required],
-        //description:[data.description, Validators.compose([Validators.required, Validators.minLength(30)])],
         publisherName:[data.publisherName, Validators.compose([Validators.required, Validators.minLength(30)])],
         price:[data.price],
         publicationYear:[data.publicationYear] 

@@ -11,6 +11,7 @@ import { ShowBookComponent } from './components/show-book/show-book.component';
 import { UpdateBookComponent } from './components/update-book/update-book.component';
 import { CartComponent } from './components/cart/cart.component';
 import { UploadComponent } from './components/upload/upload.component';
+import { LoginComponent } from './components/login/login.component';
 const routes: Routes = [];
 
 @NgModule({
@@ -22,7 +23,8 @@ const routes: Routes = [];
     ShowBookComponent,
     UpdateBookComponent,
     CartComponent,
-    UploadComponent
+    UploadComponent,
+    LoginComponent
   ],
   imports: [
     RouterModule.forRoot([
@@ -31,7 +33,8 @@ const routes: Routes = [];
       { path: 'new-book', component: NewBookComponent},
       { path: 'update-book/:id', component: UpdateBookComponent},
       { path: 'delete-book/:id', component: DeleteBookComponent},
-      { path: 'show-book/:id', component: ShowBookComponent}
+      { path: 'show-book/:id', component: ShowBookComponent},
+      { path: "login", component: LoginComponent }
     ]),
     BrowserModule,
     FormsModule,

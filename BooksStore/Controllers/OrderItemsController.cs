@@ -14,7 +14,7 @@ using BooksStore.Models;
 namespace BooksStore.Controllers
 {
     [Route("/api/orders/{orderId}/items")]
-   // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class OrderItemsController : Controller
     {
         private readonly IBooksStoreRepository _repository;
@@ -33,8 +33,8 @@ namespace BooksStore.Controllers
         {
             try
             {
-                // var order = _repository.GetOrderById(User.Identity.Name, orderId);
-                var order = _repository.GetOrderById(orderId);
+                var order = _repository.GetOrderById(User.Identity.Name, orderId);
+               // var order = _repository.GetOrderById(orderId);
 
                 if (order != null)
                 {
@@ -57,8 +57,8 @@ namespace BooksStore.Controllers
         {
             try
             {
-                //var order = _repository.GetOrderById(User.Identity.Name, orderId);
-                var order = _repository.GetOrderById(orderId);
+                var order = _repository.GetOrderById(User.Identity.Name, orderId);
+                //var order = _repository.GetOrderById(orderId);
 
                 if (order != null)
                 {
@@ -76,7 +76,6 @@ namespace BooksStore.Controllers
                 {
                     return NotFound();
                 }
-                /// too much NotFound 
             }
             catch (Exception ex)
             {
