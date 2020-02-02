@@ -10,6 +10,7 @@ import { NewBookComponent } from './components/new-book/new-book.component';
 import { ShowBookComponent } from './components/show-book/show-book.component';
 import { UpdateBookComponent } from './components/update-book/update-book.component';
 import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from "./components/checkout/checkout.component";
 import { UploadComponent } from './components/upload/upload.component';
 import { LoginComponent } from './components/login/login.component';
 const routes: Routes = [];
@@ -24,7 +25,8 @@ const routes: Routes = [];
     UpdateBookComponent,
     CartComponent,
     UploadComponent,
-    LoginComponent
+    LoginComponent,
+    CheckoutComponent
   ],
   imports: [
     RouterModule.forRoot([
@@ -34,6 +36,7 @@ const routes: Routes = [];
       { path: 'update-book/:id', component: UpdateBookComponent},
       { path: 'delete-book/:id', component: DeleteBookComponent},
       { path: 'show-book/:id', component: ShowBookComponent},
+      { path: "checkout", component: CheckoutComponent },
       { path: "login", component: LoginComponent }
     ]),
     BrowserModule,

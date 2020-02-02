@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Order, OrderItem } from "src/app/shared/order";
 import { map } from 'rxjs/operators';
 
@@ -53,6 +53,21 @@ export class BookService {
         }));
   }
 
+  public checkout() {
+    if (!this.order.orderNumber) {
+      this.order.orderNumber = this.order.orderDate.getFullYear().toString() + this.order.orderDate.getTime().toString();
+    }
+
+    return this.http.post("https://localhost:44369/api/Orders", this.order, {
+      headers: new HttpHeaders({ "Authorization": "Bearer " + this.token })
+    })
+      .pipe(
+        map(response => {
+          this.order = new Order();
+          return true;
+        }));
+  }
+
   public AddToOrder(book: Book) {
 
     let item: OrderItem = this.order.items.find(i => i.bookId == book.id);
@@ -66,6 +81,7 @@ export class BookService {
       item = new OrderItem();
       item.bookId = book.id;
       item.bookAuthor = book.authorName;
+      item.bookImage = book.image;
       item.bookTitle = book.title;
       item.unitPrice = book.price;
       item.quantity = 1;

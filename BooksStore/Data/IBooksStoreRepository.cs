@@ -6,6 +6,7 @@ namespace BooksStore.Data
     public interface IBooksStoreRepository
     {
         void AddEntity(object model);
+        void AddOrder(Order newOrder);
         IEnumerable<Book> GetAllBooks();
         IEnumerable<Order> GetAllOrders(bool includeItems);
         IEnumerable<Order> GetAllOrdersByUser(string username, bool includeItems);

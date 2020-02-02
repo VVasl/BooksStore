@@ -17,4 +17,5 @@ export class Order {
     bookId: number;
     bookTitle: string;
     bookAuthor: string;
+    bookImage:string;
   }

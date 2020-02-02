@@ -3,8 +3,9 @@
     <h3>Confirm Order</h3>
     <table class="table table-bordered table-hover">
       <tr *ngFor="let o of data.order.items">
-        <td><img src="/img/{{ o.productArtId }}.jpg" alt="o.productTitle" class="img-thumbnail checkout-thumb" /></td>
-        <td>{{ o.productCategory }}({{ o.productSize }}) - {{ o.productArtist }}: {{ o.productTitle }}</td>
+        <!--<td><img src="{{o.bookImage}}" alt="o.bookTitle" class="img-thumbnail checkout-thumb" /></td>--->
+        <td><img [src]="createImgPath(o.bookImage)" alt="o.bookTitle" class="img-thumbnail checkout-thumb" /></td>
+        <td>{{ o.bookTitle }} - {{ o.bookAuthor }} </td>
         <td>{{ o.quantity }}</td>
         <td>{{ o.unitPrice|currency:'USD':"symbol" }}</td>
         <td>{{ (o.unitPrice * o.quantity)|currency:'USD':"symbol" }}</td>
@@ -15,10 +16,6 @@
         <tr>
           <td class="text-right">Subtotal</td>
           <td class="text-right">{{ data.order.subtotal|currency:'USD':"symbol" }}</td>
-        </tr>
-        <tr>
-          <td class="text-right">Shipping</td>
-          <td class="text-right">$ 0.00</td>
         </tr>
         <tr>
           <td class="text-right">Total:</td>

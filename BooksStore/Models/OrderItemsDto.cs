@@ -18,6 +18,6 @@ namespace BooksStore.Models
         public string BookCategory { get; set; }
         public string BookTitle { get; set; }
         public string BookAuthor { get; set; }
-        public string BookAuthorId { get; set; }
+        public string BookImage { get; set; }
     }
 }
