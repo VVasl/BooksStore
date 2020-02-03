@@ -1,7 +1,11 @@
 <h1>Books</h1>
 
 <p *ngIf="!books"><b>Loading...</b></p>
-
+<p><button type="button" 
+    class="btn btn-primary btn-sm" 
+    (click)="addBook()">
+    Add new book
+</button></p>
 <table class="table table-striped" *ngIf="books">
 <thead>
     <tr>

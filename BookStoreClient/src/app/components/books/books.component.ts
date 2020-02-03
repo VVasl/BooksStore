@@ -20,6 +20,10 @@ export class BooksComponent implements OnInit {
     })
   }
 
+  addBook(){
+    this.router.navigate(["/new-book"]);
+  }
+
   showBook(id: number){
     this.router.navigate(["/show-book/"+id]);
   }
