@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace BooksStore.Data.Entities
+﻿namespace BooksStore.Data.Entities
 {
     public class Book
     {
-        
-   [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-    public int Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public string AuthorName { get; set; }
         public string PublisherName { get; set; }

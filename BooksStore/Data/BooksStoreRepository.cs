@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using BooksStore.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using NLog;
@@ -26,7 +25,6 @@ namespace BooksStore.Data
 
         public void AddOrder(Order newOrder)
         {
-            // Convert new products to lookup of product
             foreach (var item in newOrder.Items)
             {
                 item.Book = _ctx.Books.Find(item.Book.Id);

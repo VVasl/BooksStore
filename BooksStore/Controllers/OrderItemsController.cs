@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BooksStore.Data;
-using System.Threading.Tasks;
 using AutoMapper;
 using NLog;
 using BooksStore.Data.Entities;
@@ -34,7 +33,6 @@ namespace BooksStore.Controllers
             try
             {
                 var order = _repository.GetOrderById(User.Identity.Name, orderId);
-               // var order = _repository.GetOrderById(orderId);
 
                 if (order != null)
                 {
@@ -58,7 +56,6 @@ namespace BooksStore.Controllers
             try
             {
                 var order = _repository.GetOrderById(User.Identity.Name, orderId);
-                //var order = _repository.GetOrderById(orderId);
 
                 if (order != null)
                 {

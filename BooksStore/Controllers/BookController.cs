@@ -2,12 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using NLog;
 using BooksStore.Models;
 using BooksStore.Data.Entities;
-using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 
 namespace BooksStore.Controllers
@@ -138,11 +136,5 @@ namespace BooksStore.Controllers
 
             return book;
         }
-
-
-        //private bool BookExists(int id)
-        //{
-        //    return _context.Books.Any(e => e.Id == id);
-        //}
     }
 }

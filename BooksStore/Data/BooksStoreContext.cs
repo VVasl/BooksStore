@@ -1,10 +1,6 @@
 ﻿using BooksStore.Data.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BooksStore.Data
 {
@@ -24,10 +20,6 @@ namespace BooksStore.Data
 
             builder.Entity<Book>(entity =>
             {
-                //entity.Property(p => p.Title)
-                //      .IsRequired()
-                //      .HasMaxLength(100);
-
                 entity.Property(p => p.Price)
                       .HasColumnType("decimal(18,2)");
 

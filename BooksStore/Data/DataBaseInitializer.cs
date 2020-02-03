@@ -1,8 +1,6 @@
 ﻿using BooksStore.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,61 +8,6 @@ namespace BooksStore.Data
 {
     public class DataBaseInitializer
     {
-        //UserManager<StoreUser> userManager;
-        //RoleManager<IdentityRole> roleManager;
-        //BooksStoreContext appContext;
-
-        //public DataBaseInitializer(UserManager<StoreUser> _userManager, RoleManager<IdentityRole> _roleManager,
-        //    BooksStoreContext _appContext)
-        //{
-        //    userManager = _userManager;
-        //    roleManager = _roleManager;
-        //    appContext = _appContext;
-        //}
-
-        //public static async Task InitializeAsync(UserManager<StoreUser> userManager, RoleManager<IdentityRole> roleManager,
-        //  BooksStoreContext appContext)
-        //{
-        //    //public async Task InitializeAsync()
-        //    //{
-        //    BooksStoreContext appDbContext = appContext;
-        //    string adminEmail = "administrator123@gmail.com";
-        //    string adminPassword = "Admin123";
-
-        //    if (await roleManager.FindByNameAsync("admin") == null)
-        //    {
-                
-        //        await roleManager.CreateAsync(new IdentityRole("admin"));
-        //    }
-
-        //    if (await roleManager.FindByNameAsync("customer") == null)
-        //    {
-        //        await roleManager.CreateAsync(new IdentityRole("customer"));
-        //    }
-            
-        //    if (await userManager.FindByNameAsync(adminEmail) == null)
-        //    {
-        //        StoreUser admin = new StoreUser()
-        //        {
-        //            FirstName = "Vika",
-        //            LastName ="Vasl",
-        //            Email = adminEmail,
-        //            UserName = adminEmail
-        //        };
-        //        IdentityResult result = await userManager.CreateAsync(admin, adminPassword);
-
-        //        if (result.Succeeded)
-        //        {
-        //            await userManager.AddToRoleAsync(admin, "admin");
-        //        }
-        //        if (result != IdentityResult.Success)
-        //        {
-        //            throw new InvalidOperationException("Could not create user in Seeding");
-        //        }
-        //    }
-        //    appContext.SaveChanges();
-        //}
-
         public static async Task SeedData(UserManager<StoreUser> userManager, RoleManager<IdentityRole> roleManager, BooksStoreContext ctx)
         {
             SeedRoles(roleManager);

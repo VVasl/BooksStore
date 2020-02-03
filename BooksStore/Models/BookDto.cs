@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BooksStore.Models
 {
@@ -18,10 +14,6 @@ namespace BooksStore.Models
 
         [Required]
         public string PublisherName { get; set; }
-        //public string Category { get; set; }
-
-        //[Required]
-        //public int Quantity { get; set; }
 
         [Required]
         public decimal Price { get; set; }
@@ -29,6 +21,5 @@ namespace BooksStore.Models
         [Required]
         public int PublicationYear { get; set; }
         public string Image { get; set; }
-        //public string Details { get; set; }
     }
 }
