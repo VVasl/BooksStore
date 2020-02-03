@@ -4,10 +4,10 @@ import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  templateUrl: './bag.component.html',
+  styleUrls: ['./bag.component.css']
 })
-export class CartComponent implements OnInit {
+export class BagComponent implements OnInit {
 
   constructor(public data: BookService, private router: Router) { }
 

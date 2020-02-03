@@ -9,7 +9,7 @@ import { DeleteBookComponent } from './components/delete-book/delete-book.compon
 import { NewBookComponent } from './components/new-book/new-book.component';
 import { ShowBookComponent } from './components/show-book/show-book.component';
 import { UpdateBookComponent } from './components/update-book/update-book.component';
-import { CartComponent } from './components/cart/cart.component';
+import { BagComponent } from './components/bag/bag.component';
 import { CheckoutComponent } from "./components/checkout/checkout.component";
 import { UploadComponent } from './components/upload/upload.component';
 import { LoginComponent } from './components/login/login.component';
@@ -23,7 +23,7 @@ const routes: Routes = [];
     NewBookComponent,
     ShowBookComponent,
     UpdateBookComponent,
-    CartComponent,
+    BagComponent,
     UploadComponent,
     LoginComponent,
     CheckoutComponent

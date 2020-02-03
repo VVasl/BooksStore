@@ -5,7 +5,7 @@
       <div class="card bg-light p-4 m-1">
         <img [src]="createImgPath(book.image)" style="width:300px; height:300px;" [alt]="book.title" />
         <ul  class="product-props list-unstyled">
-         <li class="text-primary text-right">{{ book.price | currency:"UAH":true }}</li>
+         <li class="text-primary text-right">₴{{ book.price }}</li>
           <li><strong>Author</strong>: {{ book.authorName }}</li>
           <li><strong>Publication Year</strong>: {{ book.publicationYear }}</li>
         </ul>
