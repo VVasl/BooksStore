@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BookService } from './services/book.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'BookStoreClient';
+  constructor(public data: BookService, private router: Router) { }
+
+
+  onLog() {
+    if (this.data.loginRequired) {
+      this.router.navigate(["login"]);
+    } else {
+      this.router.navigate(["/books"]);
+    }
+  }
 }
+
+

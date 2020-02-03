@@ -11,7 +11,9 @@ namespace BooksStore
 {
     public class Program
     {
-        public static void Main(string[] args)
+        protected Program() { }
+
+        static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
             var scopeFactory = host.Services.GetService<IServiceScopeFactory>();

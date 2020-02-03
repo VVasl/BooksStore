@@ -29,7 +29,6 @@ export class UpdateBookComponent implements OnInit {
         publisherName:[data.publisherName, Validators.compose([Validators.required, Validators.minLength(30)])],
         price:[data.price],
         publicationYear:[data.publicationYear]
-        //image:[data.image]  
       });
 
     })

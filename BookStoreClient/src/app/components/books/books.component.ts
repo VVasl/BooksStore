@@ -37,7 +37,6 @@ export class BooksComponent implements OnInit {
   }
 
   public createImgPath = (serverPath: string) => {
-    //return `https://localhost:44369/Resources/Images/${serverPath}.jpg`;
     return `${serverPath}`;
   }
 }

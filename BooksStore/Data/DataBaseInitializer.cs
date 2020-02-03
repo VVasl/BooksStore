@@ -1,6 +1,7 @@
 ﻿using BooksStore.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,16 +9,19 @@ namespace BooksStore.Data
 {
     public class DataBaseInitializer
     {
+        public static IConfiguration _config { get; set; }
+
+
         public static async Task SeedData(UserManager<StoreUser> userManager, RoleManager<IdentityRole> roleManager, BooksStoreContext ctx)
         {
-            SeedRoles(roleManager);
+            await SeedRolesAsync(roleManager);
             await SeedUsersAsync(userManager, ctx);
         }
 
         private static async Task SeedUsersAsync(UserManager<StoreUser> userManager, BooksStoreContext ctx)
         {
-            string adminEmail = "administrator13@gmail.com";
-            string adminPassword = "Admin13";
+            string adminEmail = _config["Admin:Email"];
+            string adminPassword = _config["Admin:Password"];
             if (userManager.FindByEmailAsync(adminEmail).Result == null)
             {
                 StoreUser admin = new StoreUser()
@@ -48,8 +52,8 @@ namespace BooksStore.Data
                 }
             }
 
-            string userEmail = "user1@gmail.com";
-            string userPassword = "User1";
+            string userEmail = _config["User:Email"];
+            string userPassword = _config["User:Password"];
 
             if ( userManager.FindByEmailAsync(userEmail).Result == null)
             {
@@ -86,23 +90,17 @@ namespace BooksStore.Data
             ctx.SaveChanges();
         }
 
-        private static void SeedRoles(RoleManager<IdentityRole> roleManager)
+        private static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
         {
             if (!roleManager.RoleExistsAsync("User").Result)
             {
-                IdentityRole role = new IdentityRole();
-                role.Name = "User";
-                IdentityResult roleResult = roleManager.
-                CreateAsync(role).Result;
+                await roleManager.CreateAsync(new IdentityRole("User"));
             }
 
 
             if (!roleManager.RoleExistsAsync("Admin").Result)
             {
-                IdentityRole role = new IdentityRole();
-                role.Name = "Admin";
-                IdentityResult roleResult = roleManager.
-                CreateAsync(role).Result;
+                await roleManager.CreateAsync(new IdentityRole("Admin"));
             }
         }
     }

@@ -18,30 +18,28 @@ namespace BooksStore.Controllers
     [Route("api/[controller]")]
     public class AccountController : Controller
     {
-        private readonly Logger _logger;
         private readonly SignInManager<StoreUser> _signInManager;
         private readonly UserManager<StoreUser> _userManager;
         private readonly IConfiguration _config;
 
         public AccountController(SignInManager<StoreUser> signInManager, UserManager<StoreUser> userManager, IConfiguration config)
         {
-            _logger = LogManager.GetCurrentClassLogger();
             _signInManager = signInManager;
             _userManager = userManager;
             _config = config;
         }
 
-        //public IActionResult Login()
-        //{
-        //    if (this.User.Identity.IsAuthenticated)
-        //    {
-        //        //return RedirectToAction("Index", "Book");
-        //        return Ok();
-        //    }
+        [HttpGet]
+        [Route("Login")]
+        public IActionResult Login()
+        {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("GetBooks", "BookController", null);
+            }
 
-        //    //return View();
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
@@ -55,12 +53,10 @@ namespace BooksStore.Controllers
                     if (Request.Query.Keys.Contains("ReturnUrl"))
                     {
                         return Redirect(Request.Query["ReturnUrl"].First());
-                       // return BadRequest("Failed to log in");
                     }
                     else
                     {
-                        // return RedirectToAction("Shop", "App");
-                        return Ok();
+                        return RedirectToAction("GetBooks", "BookController", null);
                     }
                 }
             }
@@ -74,8 +70,7 @@ namespace BooksStore.Controllers
         {
             await _signInManager.SignOutAsync();
 
-            //return RedirectToAction("Index", "Book");
-            return Ok();
+            return RedirectToAction("GetBooks", "BookController", null);
         }
 
         [HttpPost]

@@ -7,11 +7,13 @@ using NLog;
 using BooksStore.Models;
 using BooksStore.Data.Entities;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BooksStore.Controllers
 {
     [ApiController]
     [Route("api/[Controller]")]
+    [Authorize(Roles = "Admin")]
     public class BookController : ControllerBase
     {
         private readonly BooksStoreContext _ctx;
@@ -27,6 +29,7 @@ namespace BooksStore.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         [HttpGet("[action]")]
         public ActionResult GetBooks()
         {
@@ -56,8 +59,6 @@ namespace BooksStore.Controllers
             {
                 return NotFound();
             }
-
-            
         }
 
         [HttpPost]

@@ -59,7 +59,7 @@ namespace BooksStore.Controllers
 
                 if (order != null)
                 {
-                    var item = order.Items.Where(i => i.Id == id).FirstOrDefault();
+                    var item = order.Items.FirstOrDefault(i => i.Id == id);
                     if (item != null)
                     {
                         return Ok(_mapper.Map<OrderItem, OrderItemsDto>(item));

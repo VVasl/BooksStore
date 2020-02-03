@@ -15,10 +15,8 @@ export class BagComponent implements OnInit {
   }
   onCheckout() {
     if (this.data.loginRequired) {
-      // Force Login
       this.router.navigate(["login"]);
     } else {
-      // Go to checkout
       this.router.navigate(["checkout"]);
     }
   }
