@@ -75,7 +75,7 @@ namespace BooksStore.Data
                 if (!ctx.Users.Any(u => u.UserName == user.UserName))
                 {
                     var password = new PasswordHasher<StoreUser>();
-                    var hashed = password.HashPassword(user, "password");
+                    var hashed = password.HashPassword(user, userPassword);
                     user.PasswordHash = hashed;
                     var userStore = new UserStore<StoreUser>(ctx);
                     await userStore.CreateAsync(user);

@@ -59,7 +59,7 @@ namespace BooksStore.Data
             catch (Exception ex)
             {
                 _logger.Error($"Failed to get all books:{ex}");
-                return null;
+                return Enumerable.Empty<Book>();
             }
 
         }
