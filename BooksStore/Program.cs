@@ -1,6 +1,6 @@
 using System;
-using BooksStore.Data;
-using BooksStore.Data.Entities;
+using BooksStore.Infrastructure.Data;
+using BooksStore.Core.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;

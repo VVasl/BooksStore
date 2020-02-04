@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using BooksStore.Data;
-using BooksStore.Data.Entities;
-using BooksStore.Models;
+using BooksStore.Infrastructure.Data;
+using BooksStore.Core.Entities;
+using BooksStore.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

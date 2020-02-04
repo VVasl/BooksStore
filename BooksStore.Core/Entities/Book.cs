@@ -1,25 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BooksStore.Models
+﻿namespace BooksStore.Core.Entities
 {
-    public class BookDto
+    public class Book
     {
         public int Id { get; set; }
-
-        [Required]
         public string Title { get; set; }
-
-        [Required]
         public string AuthorName { get; set; }
-
-        [Required]
         public string PublisherName { get; set; }
-
-        [Required]
+        public string Category { get; set; }
+        public int Quantity { get; set; }
         public decimal Price { get; set; }
-
-        [Required]
         public int PublicationYear { get; set; }
         public string Image { get; set; }
+        public string Details { get; set; }
     }
 }

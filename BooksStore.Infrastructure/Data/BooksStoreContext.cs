@@ -1,8 +1,8 @@
-﻿using BooksStore.Data.Entities;
+﻿using BooksStore.Core.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace BooksStore.Data
+namespace BooksStore.Infrastructure.Data
 {
     public class BooksStoreContext : IdentityDbContext<StoreUser>
     {

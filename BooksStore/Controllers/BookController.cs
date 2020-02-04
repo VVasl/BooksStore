@@ -1,11 +1,11 @@
-﻿using BooksStore.Data;
+﻿using BooksStore.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using NLog;
-using BooksStore.Models;
-using BooksStore.Data.Entities;
+using BooksStore.ViewModels;
+using BooksStore.Core.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 
@@ -13,7 +13,7 @@ namespace BooksStore.Controllers
 {
     [ApiController]
     [Route("api/[Controller]")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class BookController : ControllerBase
     {
         private readonly BooksStoreContext _ctx;

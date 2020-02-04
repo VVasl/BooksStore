@@ -1,11 +1,11 @@
-﻿using BooksStore.Data.Entities;
+﻿using BooksStore.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BooksStore.Data
+namespace BooksStore.Infrastructure.Data
 {
     public class DataBaseInitializer
     {

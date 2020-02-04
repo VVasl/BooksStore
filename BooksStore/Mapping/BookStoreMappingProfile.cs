@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using BooksStore.Data.Entities;
-using BooksStore.Models;
+using BooksStore.Core.Entities;
+using BooksStore.ViewModels;
 
-namespace BooksStore.Data
+namespace BooksStore.Mapping
 {
     public class BooksStoreMappingProfile : Profile
     {

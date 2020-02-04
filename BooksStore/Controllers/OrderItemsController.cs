@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using BooksStore.Data;
+using BooksStore.Infrastructure.Data;
 using AutoMapper;
 using NLog;
-using BooksStore.Data.Entities;
-using BooksStore.Models;
+using BooksStore.Core.Entities;
+using BooksStore.ViewModels;
 
 namespace BooksStore.Controllers
 {

@@ -1,7 +1,7 @@
-﻿using BooksStore.Data.Entities;
+﻿using BooksStore.Core.Entities;
 using System.Collections.Generic;
 
-namespace BooksStore.Data
+namespace BooksStore.Infrastructure.Data
 {
     public interface IBooksStoreRepository
     {

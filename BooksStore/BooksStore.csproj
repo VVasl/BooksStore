@@ -26,5 +26,10 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BooksStore.Core\BooksStore.Core.csproj" />
+    <ProjectReference Include="..\BooksStore.Infrastructure\BooksStore.Infrastructure.csproj" />
+  </ItemGroup>
+
 
 </Project>

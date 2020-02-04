@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BooksStore.Data.Entities
+namespace BooksStore.Core.Entities
 {
     public class Order
     {

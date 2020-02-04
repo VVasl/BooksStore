@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-namespace BooksStore.Models
+namespace BooksStore.ViewModels
 {
     public class OrderDto
     {

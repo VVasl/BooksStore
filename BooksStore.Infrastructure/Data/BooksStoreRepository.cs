@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using BooksStore.Data.Entities;
+using BooksStore.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using NLog;
 
-namespace BooksStore.Data
+namespace BooksStore.Infrastructure.Data
 {
     public class BooksStoreRepository : IBooksStoreRepository
     {

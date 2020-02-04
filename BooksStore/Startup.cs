@@ -1,8 +1,8 @@
 using System.IO;
 using System.Text;
 using AutoMapper;
-using BooksStore.Data;
-using BooksStore.Data.Entities;
+using BooksStore.Infrastructure.Data;
+using BooksStore.Core.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

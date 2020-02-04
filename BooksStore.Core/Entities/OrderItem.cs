@@ -1,4 +1,4 @@
-﻿namespace BooksStore.Data.Entities
+﻿namespace BooksStore.Core.Entities
 {
     public class OrderItem
     {

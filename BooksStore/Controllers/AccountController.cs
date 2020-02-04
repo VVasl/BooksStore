@@ -1,7 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
-using BooksStore.Data.Entities;
-using BooksStore.Models;
+using BooksStore.Core.Entities;
+using BooksStore.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -56,7 +56,8 @@ namespace BooksStore.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("GetBooks", "BookController", null);
+                        //return RedirectToAction("GetBooks", "BookController", null);
+                        return Ok();
                     }
                 }
             }
@@ -66,11 +67,21 @@ namespace BooksStore.Controllers
         }
 
         [HttpGet]
+
+        public async Task<IActionResult> Logout(string redirectUrl)
+        {
+            await _signInManager.SignOutAsync();
+
+            //return RedirectToAction("GetBooks", "BookController", null);
+            return Redirect(redirectUrl ?? "/");
+        }
+
+        [HttpPost("Logout")]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
 
-            return RedirectToAction("GetBooks", "BookController", null);
+            return Ok();
         }
 
         [HttpPost]
