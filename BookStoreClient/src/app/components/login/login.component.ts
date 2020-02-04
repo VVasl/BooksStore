@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   constructor(private data: BookService, private router: Router) { }
 
   errorMessage: string = "";
+  authenticated: boolean = false;
   public creds = {
     username: "",
     password: ""
@@ -22,16 +23,26 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     this.errorMessage = "";
+    this.authenticated = false;
     this.data.login(this.creds)
       .subscribe(success => {
         if (success) {
           if (this.data.order.items.length == 0) {
+            this.authenticated = true;
             this.router.navigate([""]);
           } else {
             this.router.navigate(["checkout"]);
           }
         }
-      }, err => this.errorMessage = "Failed to login");
+      }, (err => {
+        this.errorMessage = "Failed to login";
+        this.authenticated = false;
+      }))
   }
 
+  logout() {
+    this.authenticated = false;
+    this.data.logout();
+    this.router.navigateByUrl("/login");
+  }
 }

@@ -68,6 +68,10 @@ export class BookService {
         }));
   }
 
+  logout() {
+    this.http.post("https://localhost:44369/api/Account/Logout", null).subscribe(response => {});
+  }
+
   public AddToOrder(book: Book) {
 
     let item: OrderItem = this.order.items.find(i => i.bookId == book.id);
