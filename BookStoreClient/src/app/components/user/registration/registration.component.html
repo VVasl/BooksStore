@@ -1,0 +1,45 @@
+  <br/>
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div *ngIf="errorMessage" class="alert alert-warning">{{ errorMessage }}</div>
+      <form [formGroup]="addUserForm" autocomplete="off" (submit)="onSubmit()" novalidate>
+        <h1>Write your personal details</h1><br>
+        <div class="form-group required">
+          <label>Username</label>
+          <input class="form-control" formControlName="userName">
+          <label class="text-danger" *ngIf="addUserForm.userName?.errors.required && addUserForm.userName?.errors.touched">This field is mandatory.</label>
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input class="form-control" formControlName="email">
+          <label class="text-danger" *ngIf="addUserForm.email?.touched && addUserForm.email?.errors.email">Invalid email address.</label>
+        </div>
+        <div class="form-group">
+          <label>FirstName</label>
+          <input class="form-control" formControlName="firstName">
+        </div>
+        <div class="form-group">
+          <label>LastName</label>
+          <input class="form-control" formControlName="lastName">
+        </div>
+        <div [formGroup]="addPasswordForm">
+          <div class="form-group required">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="Password">
+            <label class="text-danger" *ngIf="addPasswordForm.Password?.touched && addPasswordForm.Password?.errors.required">This field is mandatory.</label>
+           <label class="text-danger" *ngIf="addPasswordForm.Password?.touched && addPasswordForm.Password?.errors.minlength">Minimum 4 characters required.</label>
+          </div>
+         <div class="form-group required">
+            <label>Confirm Password</label>
+            <input type="password" class="form-control" formControlName="ConfirmPassword">
+            <label class="text-danger" *ngIf="addPasswordForm.ConfirmPassword?.touched && addPasswordForm.ConfirmPassword?.errors.required">This field is mandatory.</label>
+            <label class="text-danger" *ngIf="addPasswordForm.ConfirmPassword?.touched && addPasswordForm.ConfirmPassword?.errors.passwordMismatch">Confirm Password does not match.</label>
+          </div>
+        </div> 
+        <div class="form-group">
+          <button class="btn btn-success" type="submit" [disabled]="!addUserForm.valid">CREATE ACCOUNT</button>
+        <button class="btn btn-default" [routerLink]="['/']">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>

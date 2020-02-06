@@ -1,0 +1,23 @@
+.no-transform {
+    text-transform: none;
+}
+.form-control, p, h2{
+    width: 80%;
+}
+.row{
+    width: 80%;
+}
+
+button {
+    width:50x;
+    height:40px;
+}
+
+label{
+    background: none;
+    font-size: 20px;
+    letter-spacing: .3px;
+    line-height: 24px;
+    padding-bottom: 3px;
+    padding-top: 0;
+}

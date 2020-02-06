@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { BookService } from 'src/app/services/book.service';
+import { BookService } from 'src/app/services/book/book.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string = "";
   authenticated: boolean = false;
   public creds = {
-    username: "",
+    email: "",
     password: ""
   };
 
@@ -44,5 +44,9 @@ export class LoginComponent implements OnInit {
     this.authenticated = false;
     this.data.logout();
     this.router.navigateByUrl("/login");
+  }
+
+  createAccount(){
+    this.router.navigate(["/registration"]);
   }
 }

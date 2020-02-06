@@ -15,7 +15,7 @@ using System.Text;
 namespace BooksStore.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[Controller]")]
     public class AccountController : Controller
     {
         private readonly SignInManager<StoreUser> _signInManager;
@@ -27,6 +27,38 @@ namespace BooksStore.Controllers
             _signInManager = signInManager;
             _userManager = userManager;
             _config = config;
+        }
+
+        [HttpPost]
+        [Route("Register")]
+        public async Task<IActionResult> Register([FromBody]UserModel model)
+        {          
+            try
+            {
+                if (_userManager.FindByEmailAsync(model.Email).Result == null)
+                {
+                    var storeUser = new StoreUser()
+                    {
+                        UserName = model.UserName,
+                        Email = model.Email,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName
+                    };
+                    var result = await _userManager.CreateAsync(storeUser, model.Password);
+
+                    if (result.Succeeded)
+                    {
+                        _userManager.AddToRoleAsync(storeUser, "User").Wait();
+                    }
+                    return Ok(result);
+                }
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [HttpGet]
@@ -46,7 +78,7 @@ namespace BooksStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 
                 if (result.Succeeded)
                 {
@@ -90,7 +122,7 @@ namespace BooksStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByNameAsync(model.UserName);
+                var user = await _userManager.FindByEmailAsync(model.Email);
 
                 if (user != null)
                 {
@@ -102,7 +134,7 @@ namespace BooksStore.Controllers
                         {
                           new Claim(JwtRegisteredClaimNames.Sub, user.Email),
                           new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                          new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName)
+                          new Claim(JwtRegisteredClaimNames.UniqueName, user.Email)
                         };
 
                         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from 'src/app/services/book.service';
+import { BookService } from 'src/app/services/book/book.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,6 @@ export class NewBookComponent implements OnInit {
 
   addBookForm: FormGroup;
   selectedFile: File = null;
-  public response: {'dbPath': ''}; 
 
   constructor(private service: BookService, private fb: FormBuilder, private router: Router) { }
 

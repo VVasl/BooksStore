@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Order, OrderItem } from "src/app/shared/order";
+import { Order, OrderItem } from "src/app/interface/order";
 import { map } from 'rxjs/operators';
 
 @Injectable({

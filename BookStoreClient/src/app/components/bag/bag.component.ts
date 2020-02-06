@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from 'src/app/services/book.service';
+import { BookService } from 'src/app/services/book/book.service';
 import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-cart',
+  selector: 'app-bag',
   templateUrl: './bag.component.html',
   styleUrls: ['./bag.component.css']
 })

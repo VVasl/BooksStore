@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 import { HomeComponent } from './components/home/home.component';
 import { BooksComponent } from './components/books/books.component';
@@ -13,6 +14,8 @@ import { BagComponent } from './components/bag/bag.component';
 import { CheckoutComponent } from "./components/checkout/checkout.component";
 import { UploadComponent } from './components/upload/upload.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegistrationComponent } from './components/user/registration/registration.component';
+
 const routes: Routes = [];
 
 @NgModule({
@@ -26,7 +29,8 @@ const routes: Routes = [];
     BagComponent,
     UploadComponent,
     LoginComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    RegistrationComponent
   ],
   imports: [
     RouterModule.forRoot([
@@ -37,11 +41,14 @@ const routes: Routes = [];
       { path: 'delete-book/:id', component: DeleteBookComponent},
       { path: 'show-book/:id', component: ShowBookComponent},
       { path: "checkout", component: CheckoutComponent },
-      { path: "login", component: LoginComponent }
+      { path: "login", component: LoginComponent },
+      { path: 'registration', component: RegistrationComponent }
+      
     ]),
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
   ],
   exports: [RouterModule]
 })
